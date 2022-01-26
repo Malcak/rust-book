@@ -1,7 +1,11 @@
 fn main() {
-    let s = String::from("Los amigos son amigos para siempre y por siempre");
+    let mut s = String::from("hello world");
+
     let word = first_word(&s);
-    println!("The first word is: {}", word);
+
+    s.clear(); // error!
+    
+    println!("the first word is: {}", word);
 }
 
 fn first_word(s: &String) -> &str {
