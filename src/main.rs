@@ -1,11 +1,21 @@
 fn main() {
-    let reference_to_nothing = dangle();
+    let s = String::from("Los amigos son amigos para siempre y por siempre");
+    let index = first_word(&s);
+    println!("the index of the first word is: {}", index);
 }
 
-fn dangle() -> &String { // dangle returns a reference to a String
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
 
-    let s = String::from("hello"); // s is a new String
+    // For now, know that iter is a method that returns each element in a
+    // collection and that enumerate wraps the result of iter and returns each
+    // element as part of a tuple instead. This is a bit more convenient than
+    // calculating the index ourselves
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
 
-    &s // we return a reference to the String, s
-} // Here, s goes out of scope, and is dropped. Its memory goes away.
-  // Danger!
+    s.len()
+}
