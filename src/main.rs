@@ -1,7 +1,22 @@
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email: email,
+        username: username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+
 fn main() {
-    let a = [1, 2, 3, 4, 5];
-
-    let slice = &a[1..3];
-
-    assert_eq!(slice, &[2, 3]);
+    let user1 = build_user(
+        String::from("someone@example.com"),
+        String::from("someusername123"),
+    );
 }
