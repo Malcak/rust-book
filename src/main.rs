@@ -1,16 +1,17 @@
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32)
+}
 
-#![allow(unused)]
+impl Message {
+    fn call(&self) {
+        // method body would be defined here
+    }
+}
+
 fn main() {
-struct Ipv4Addr {
-    // --snip--
-}
-
-struct Ipv6Addr {
-    // --snip--
-}
-
-enum IpAddr {
-    V4(Ipv4Addr),
-    V6(Ipv6Addr),
-}
+    let m = Message::Write(String::from("hello"));
+    m.call();
 }
